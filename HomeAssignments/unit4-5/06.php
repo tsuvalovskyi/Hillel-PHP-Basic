@@ -3,15 +3,15 @@
 $cardNumber = random_int(6, 14);
 
 $cards = [
-    6 => 'Six',
-    7 => 'Seven',
-    8 => 'Eight',
-    9 => 'Nine',
-    10 => 'Ten',
-    11 => 'Jack',
-    12 => 'Queen',
-    13 => 'King',
-    14 => 'Ace'
+    6 => 'Шістка',
+    7 => 'Сімка',
+    8 => 'Вісімка',
+    9 => 'Дев\'ятка',
+    10 => 'Десятка',
+    11 => 'Валет',
+    12 => 'Дама',
+    13 => 'Король',
+    14 => 'Туз'
 ];
 
-echo "Your card is " . $cards[$cardNumber];
+echo "Карта під номером " . $cardNumber . " - це " . $cards[$cardNumber];
