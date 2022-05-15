@@ -10,8 +10,4 @@ $fingerNames = [
     5 => 'мізинець'
 ];
 
-if ($finger === 5) {
-    echo "Палець №" . $finger . " - це " . $fingerNames[$finger];
-} else {
-    echo "Палець №" . $finger . " - це " . $fingerNames[$finger] . " палець";
-}
+echo "Палець №" . $finger . " - це " . $fingerNames[$finger];
