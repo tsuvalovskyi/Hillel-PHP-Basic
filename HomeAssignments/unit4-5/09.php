@@ -14,7 +14,7 @@ $tensWithLast = $number;
 $tens = ($number - $number % 10) / 10;
 $last = $number - $tens * 10;
 
-$thousandInWords = [
+$thousandsInWords = [
     1 => 'одна тисяча',
     2 => 'дві тисячі',
     3 => 'три тисячі',
@@ -26,7 +26,7 @@ $thousandInWords = [
     9 => 'дев\'ять тисяч'
 ];
 
-$hundredInWords = [
+$hundredsInWords = [
     1 => 'сто',
     2 => 'двісті',
     3 => 'триста',
@@ -38,7 +38,7 @@ $hundredInWords = [
     9 => 'дев\'ятсот'
 ];
 
-$tenInWords = [
+$tensInWords = [
     2 => 'двадцять',
     3 => 'тридцять',
     4 => 'сорок',
@@ -49,7 +49,7 @@ $tenInWords = [
     9 => 'дев\'яносто'
 ];
 
-$tenWithLastInWords = [
+$tensWithLastInWords = [
     10 => 'десять',
     11 => 'одинадцять',
     12 => 'дванадцять',
@@ -74,15 +74,26 @@ $lastInWords = [
     9 => 'дев\'ять',
 ];
 
-$numberInWords = ($thousands !== 0) ? $thousandInWords[$thousands] . " " : "";
-$numberInWords .= ($hundreds !== 0) ? $hundredInWords[$hundreds] . " " : "";
+if ($thousands !== 0) {
+    $numberInWords = $thousandsInWords[$thousands] . " ";
+} else {
+    $numberInWords = "";
+}
+
+if ($hundreds !== 0) {
+    $numberInWords .= $hundredsInWords[$hundreds] . " ";
+}
 
 if ($tens === 1) {
-    $numberInWords .= $tenWithLastInWords[$tensWithLast] . " ";
+    $numberInWords .= $tensWithLastInWords[$tensWithLast] . " ";
     $currency = "доларів";
 } else {
-    $numberInWords .= ($tens !== 0) ? $tenInWords[$tens] . " " : "";
-    $numberInWords .= ($last !== 0) ? $lastInWords[$last] . " " : "";
+    if ($tens !== 0) {
+        $numberInWords .= $tensInWords[$tens] . " ";
+    }
+    if ($last !== 0) {
+        $numberInWords .= $lastInWords[$last] . " ";
+    }
 
     if ($last === 1) {
         $currency = "долар";
