@@ -5,5 +5,5 @@ $arrayWithCounter = array_count_values($array);
 $arrayMin = min($array);
 $arrayMax = max($array);
 
-echo "Мінімальне число = " . $arrayMin . ", зустрічається раз - " . $arrayWithCounter[$arrayMin] . "<br>";
-echo "Максимальне число = " . $arrayMax . ", зустрічається раз - " . $arrayWithCounter[$arrayMax] . "<br>";
+echo "Мінімальне число = " . $arrayMin . ", зустрічається раз - " . $arrayWithCounter[$arrayMin] . PHP_EOL;
+echo "Максимальне число = " . $arrayMax . ", зустрічається раз - " . $arrayWithCounter[$arrayMax] . PHP_EOL;
