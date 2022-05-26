@@ -1,13 +1,13 @@
 <?php
 
-$word = "мадам";
-$wordInArray = mb_str_split($word);
-$reverseArray = array_reverse($wordInArray);
+$word = "abba";
+$wordLikeArray = mb_str_split($word);
+$reverseArray = array_reverse($wordLikeArray);
 
-$diffArray = array_diff_assoc($wordInArray, $reverseArray);
+$arraysDifference = array_diff_assoc($wordLikeArray, $reverseArray);
 
-if ($diffArray) {
-    echo "Слово " . $word . " - не є паліндромом";
-} else {
+if ($arraysDifference === []) {
     echo "Слово " . $word . " - паліндром";
+} else {
+    echo "Слово " . $word . " - не є паліндромом";
 }
