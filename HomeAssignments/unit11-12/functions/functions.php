@@ -82,8 +82,8 @@ function get_user_score(array $userAnswers, array $tasksInfo): array
     foreach ($userAnswers as $key => $userAnswer) {
         $correctAnswer = $tasksInfo[$key]['result'];
 
-        $type = gettype($correctAnswer);
-        if ($type === "double") {
+        $answerType = gettype($correctAnswer);
+        if ($answerType === "double") {
             $userAnswer = (float)$userAnswer;
         } else {
             $userAnswer = (int)$userAnswer;
