@@ -61,9 +61,9 @@ function user_is_auth($database): bool
 
         $cookieLogin = ($_COOKIE['login']);
         $cookieToken = ($_COOKIE['token']);
-        $isUser = getUserToken($database, $cookieLogin);
+        $userData = getUserToken($database, $cookieLogin);
 
-        if (!empty($isUser['token']) && $isUser['token'] === $cookieToken) {
+        if (!empty($userData['token']) && $userData['token'] === $cookieToken) {
             session_start();
             $_SESSION['auth'] = $cookieLogin;
 
