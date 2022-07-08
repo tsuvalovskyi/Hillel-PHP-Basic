@@ -59,12 +59,13 @@ function user_is_auth($database): bool
         return true;
     } elseif (!empty($_COOKIE['login']) && !empty($_COOKIE['token'])) {
 
-        $login = ($_COOKIE['login']);
-        $isUser = getUserToken($database, $login);
+        $cookieLogin = ($_COOKIE['login']);
+        $cookieToken = ($_COOKIE['token']);
+        $isUser = getUserToken($database, $cookieLogin);
 
-        if ($isUser) {
+        if (!empty($isUser['token']) && $isUser['token'] === $cookieToken) {
             session_start();
-            $_SESSION['auth'] = $login;
+            $_SESSION['auth'] = $cookieLogin;
 
             return true;
         } else {

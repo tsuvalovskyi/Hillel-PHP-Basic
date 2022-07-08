@@ -29,7 +29,6 @@ $userIsAuth = user_is_auth($connection);
     <div class="row justify-content-center">
         <div class="col col-lg-5 mt-3">
             <?php require __DIR__ . '/templates/alerts.php'; ?>
-
             <?php if ($userIsAuth): ?>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
@@ -42,8 +41,7 @@ $userIsAuth = user_is_auth($connection);
 
                 <form action="controllers/logout-controller.php" method="post">
                     <button type="submit"
-                            class="btn btn-s btn btn-outline-info d-block">Вийти
-                        з акаунту
+                            class="btn btn-s btn btn-outline-info d-block">Вийти з акаунту
                     </button>
                 </form>
 
