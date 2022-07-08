@@ -33,6 +33,7 @@ function user_register(PDO $database, array $data): bool
 
 function user_auth(PDO $database, string $email, string $password): bool
 {
+    $enteredPassword = md5($password);
 
     $statement = $database->prepare(
         'SELECT `password` FROM `users` WHERE `email` = :email'
@@ -43,11 +44,9 @@ function user_auth(PDO $database, string $email, string $password): bool
     ]);
 
     $user = $statement->fetch();
-    $passwordInDb = $user['password'];
-    $enteredPassword = md5($password);
 
-    if (!empty($user)) {
-        return ($passwordInDb === $enteredPassword);
+    if (isset($user['password']) && $user['password'] === $enteredPassword) {
+        return true;
     } else {
         return false;
     }
@@ -63,7 +62,7 @@ function user_is_auth($database): bool
         $cookieToken = ($_COOKIE['token']);
         $userData = getUserToken($database, $cookieLogin);
 
-        if (!empty($userData['token']) && $userData['token'] === $cookieToken) {
+        if (isset($userData['token']) && $userData['token'] === $cookieToken) {
             session_start();
             $_SESSION['auth'] = $cookieLogin;
 
