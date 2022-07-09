@@ -62,7 +62,7 @@ function user_is_auth(PDO $database): bool
         $cookieToken = ($_COOKIE['token']);
         $userData = getUserToken($database, $cookieLogin);
 
-        if (isset($userData['token']) && $userData['token'] === $cookieToken) {
+        if (isset($userData[0]['token']) && $userData[0]['token'] === $cookieToken) {
             session_start();
             $_SESSION['auth'] = $cookieLogin;
 
@@ -101,5 +101,5 @@ function getUserToken(PDO $database, string $email): array
         'email' => $email
     ]);
 
-    return $statement->fetch();
+    return $statement->fetchAll();
 }
