@@ -52,7 +52,7 @@ function user_auth(PDO $database, string $email, string $password): bool
     }
 }
 
-function user_is_auth($database): bool
+function user_is_auth(PDO $database): bool
 {
     if (!empty($_SESSION['auth'])) {
         return true;
@@ -76,7 +76,7 @@ function user_is_auth($database): bool
 }
 
 
-function generateToken($length = 20): string
+function generateToken(int $length = 20): string
 {
     return bin2hex(random_bytes($length));
 }
